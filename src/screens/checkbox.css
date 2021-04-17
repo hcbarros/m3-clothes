@@ -53,3 +53,23 @@
 .line-check label {
     margin-top: 3px;
 }
+
+
+
+.check-drop {
+    animation-name: checkDrop;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;    
+}
+
+@keyframes checkDrop {
+    from {
+      display: block;    
+      margin-top: -25px;
+    }
+    to {
+      display: flex;    
+      font-size: 15px;
+      font-weight: 300;
+    }
+}
