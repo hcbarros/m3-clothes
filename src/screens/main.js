@@ -13,7 +13,7 @@ export default function Main() {
 
      const [verCores, setVerCores] = useState(false);   
      const [btnArray, setBtnArray] = useState([]);
-     const [btnActive, setBtnActive] = useStateWithCallbackLazy([]);
+     const [gridDisabled, setGridDisabled] = useStateWithCallbackLazy([]);
 
 
     $('.js-dropp-action').on("click", function(e) {
@@ -34,49 +34,42 @@ export default function Main() {
       });
 
 
-      const checkBox = (evt) => {
-          alert(evt.target.checked)
-      }
+    const checkAction = (evt, grid, text, index) => {
+
+        const disabled = evt.target.disabled;
+        evt.target.disabled = true;  
+        if(grid) {
+            let array = gridDisabled;
+            if(array.length === 0) {
+                ['','','','','','','','','','','',]
+                .map(x => array.push(true));
+                setGridDisabled(array, () => {});
+            }    
+            array[index] = disabled;
+            setGridDisabled(array, () => {});
+        }
+
+        setBtnArray([], () => {});
+
+        evt.target.disabled = false;  
+    }
 
 
-    const checkColors = (array, bool) => {
+    const displayChecks = (array, drop, grid) => {
 
-        return array.map(check => 
-            <div className={bool ? "line-check check-drop" : "line-check"}>
-                <label class="container-check">
-                    <input type="checkbox" onClick={(evt) => checkBox(evt)} />
-                    <span class="checkmark"></span>
-                </label>    <div>{check}</div>
+        return array.map((text, index) => 
+            <div className={drop ? "line-check check-drop" : "line-check"}>
+                <label class={grid ? "container-check-grid" : "container-check"}>
+                    <input type="checkbox" 
+                    onClick={(evt) => checkAction(evt, grid, text, index)} />
+                    <span class={!grid ? "checkmark" : gridDisabled[index] ?  
+                    "checkmark-grid" : "checkmark-grid-active"}>
+                        {grid && text}
+                    </span>
+                </label>    {!grid && <div>{text}</div>}
             </div>)  
     }  
 
-
-    const btnAction = (evt, text, index) => {
-
-        evt.target.disabled = true;
-       
-        let array = btnActive;
-        array[index] = !array[index];
-        setBtnActive(array, () => {});
-                    
-
-        evt.target.disabled = false;
-
-        evt.target.focus = false;
-        // let array = btnArray;
-        // const enable = btnArray.indexOf(text) >= 0;
-        // if(!enable) array.push(text);
-        // else array = array.filter(t => t !== text);
-        // setBtnArray(array);
-    }
-
-    useEffect(() => {
-        if(btnActive.length === 0) {
-            let array = [];
-            ['','','','','','','','','','',''].map(x => array.push(false));
-            setBtnActive(array, () => {});
-        }
-    },[]);
 
 
     return (
@@ -96,9 +89,9 @@ export default function Main() {
                     <div className="text-clothers">Blusas</div>
                     <div className="text-filter">CORES</div>
                     
-                    {checkColors(['Amarelo','Azul','Branco','Cinza','Laranja'], false)}
+                    {displayChecks(['Amarelo','Azul','Branco','Cinza','Laranja'], false, false)}
 
-                    {verCores && checkColors(['Verde','Vermelho','Preto','Rosa','Vinho'], true)}
+                    {verCores && displayChecks(['Verde','Vermelho','Preto','Rosa','Vinho'], true, false)}
 
                     <div className="text-ver-cores" onClick={() => setVerCores(!verCores)}>
                         {verCores ? "Esconder últimas cores" : "Ver todas as cores"} 
@@ -107,11 +100,10 @@ export default function Main() {
 
                     <div className="text-tamanhos">TAMANHOS</div>
 
-                    {btnActive.length > 0 && <div className="wrapper">
-                        {['P','M','G','GG','U','36','38','40','42','44','46'].map((text, index) => 
-                        <button className={btnActive[index] ? "btn-active" : "btn-inative"} 
-                        onClick={(evt) => btnAction(evt, text, index)} >{text}
-                        </button>)}</div> }
+                    {<div className="wrapper">
+                        {displayChecks(['P','M','G','GG','U','36','38','40','42','44','46'], 
+                            false, true)}                        
+                    </div> }
 
 
 

@@ -46,7 +46,7 @@ header img:nth-child(2) {
     border-bottom: 1px solid;
     line-height: 12px;
     cursor: pointer;
-    max-width: 150px;
+    max-width: 116px;
 }
 
 .arrow-down, .arrow-up {
@@ -66,36 +66,3 @@ header img:nth-child(2) {
 .text-tamanhos {
     margin-top: 50px;
 }
-
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
- }
-
- .btn-inative {
-     height: 32px;
-     width: 32px;
-     border: 1px solid #ddd;
-     background-color: #fff;
-     color: #aaa;
-     font-size: 12px;    
-     margin-top: 9px;      
-     outline: none;
-     cursor: pointer;
- }
-
- .wrapper button:nth-child(even) {
-     margin-right: 9px;
- }
-
- .btn-active  {
-    height: 32px;
-    width: 32px;
-    background-color: #fff;
-    font-size: 12px;    
-    margin-top: 9px;      
-    outline: none;
-    cursor: pointer; 
-    border: 1px solid #00bfff;
-    color: #000;
- }
