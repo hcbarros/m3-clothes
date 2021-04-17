@@ -1,0 +1,26 @@
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px;
+    margin-inline: 10%;
+}
+
+header img:nth-child(2) {
+    width: 20px;
+    height: 20px;
+}
+
+.line-header {
+    border-bottom: 1px solid #999;
+}
+
+.body-clothers {
+    font-family: 'Open Sans', sans-serif;
+    margin-inline: 10%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+

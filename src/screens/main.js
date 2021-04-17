@@ -1,22 +1,13 @@
 
-import './index.css';
-import './dropdown.css';
-import './checkbox.css';
-import React, { useState, useEffect } from 'react';
-import { useStateWithCallbackLazy } from 'use-state-with-callback';
+import './main.css';
+import React from 'react';
 import $ from 'jquery';
-import { arrayColors, arraySizes, arrayPrices, 
-         arrayChecked } from '../components/data';
+import BloclLeft from '../components/block-left/block-left';
 import logo from '../images/logo-m3.png';
 import bag from '../images/bag.png';
 
 
 export default function Main() {
-
-     const [verCores, setVerCores] = useState(false);   
-     const [btnArray, setBtnArray] = useState([]);
-     const [gridChecked, setGridChecked] = useStateWithCallbackLazy(arrayChecked);
-
 
 
     $('.js-dropp-action').on("click", function(e) {
@@ -37,43 +28,6 @@ export default function Main() {
       });
 
 
-    const checkAction = (evt) => {
-  
-        const obj = JSON.parse(evt.target.value);
-
-        if(obj.sizes) {
-            let array = gridChecked;
-                
-            array[obj.index] = evt.target.checked;
-            setGridChecked(array, () => {});
-
-        }
-        
-        setBtnArray([], () => {});
-
-    }
-
-
-    const displayChecks = (array, obj) => {
-
-        return array.map((text, index) => {
-            
-            obj.index = index;
-            obj.text = text;
-            return <div className={obj.drop ? "line-check check-drop" : "line-check"}>
-                        <label class={obj.sizes ? "container-check-grid" : "container-check"}>                        
-                            <input type="checkbox" value={JSON.stringify(obj)}
-                            onClick={(evt) => checkAction(evt)} />
-                            <span class={!obj.sizes ? "checkmark" : gridChecked[index] ?  
-                            "checkmark-grid-active" : "checkmark-grid"}>
-                                {obj.sizes && text}
-                            </span>
-                        </label>    {!obj.sizes && <div>{text}</div>}
-                    </div>
-        });  
-    }  
-
-
     return (
 
         <div className="main">
@@ -86,31 +40,11 @@ export default function Main() {
 
             <div className="body-clothers">
             
-                <div className="filters">
-
-                    <div className="text-clothers">Blusas</div>
-                    <div className="text-colors">CORES</div>
-                    
-                    {displayChecks(arrayColors.slice(0,5), {colors: true})}
-
-                    {verCores && displayChecks(arrayColors.slice(5,10), {drop: true, colors: true})}
-
-                    <div className="text-ver-cores" onClick={() => setVerCores(!verCores)}>
-                        {verCores ? "Esconder últimas cores" : "Ver todas as cores"} 
-                    <div className={verCores ? "arrow-down" : "arrow-up"}></div></div>
-                    
-
-                    <div className="text-sizes">TAMANHOS</div>
-
-                    {<div className="wrapper"> {displayChecks(arraySizes, {sizes: true})} </div> }
-
-                    <div className="text-prices">FAIXA DE PREÇO</div>
-
-                    {displayChecks(arrayPrices.slice(0,5), {prices: true})}
-
-                </div>
+                <BloclLeft />
 
                 <div className="clothers">
+
+                    
 
                     
 
