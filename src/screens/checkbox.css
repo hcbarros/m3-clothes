@@ -18,6 +18,11 @@
     border: 1px solid #000;
 }
 
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .container-check-grid {
     display: block;
     position: relative;
@@ -103,35 +108,3 @@
     }
 }
 
-
-.wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
- }
-
- 
-
- .btn-inative {
-     height: 32px;
-     width: 32px;
-     border: 1px solid #ddd;
-     background-color: #fff;
-     color: #aaa;
-     font-size: 12px;    
-     margin-top: 9px;      
-     outline: none;
-     cursor: pointer;
- }
-
-
- .btn-active  {
-    height: 32px;
-    width: 32px;
-    background-color: #fff;
-    font-size: 12px;    
-    margin-top: 9px;      
-    outline: none;
-    cursor: pointer; 
-    border: 1px solid #00bfff;
-    color: #000;
- }

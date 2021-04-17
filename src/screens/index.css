@@ -29,9 +29,10 @@ header img:nth-child(2) {
     font-weight: 400;
 }
 
-.text-filter {
-    margin-top: 30px;
-    margin-bottom: 13px;
+.text-colors, .text-sizes,
+.text-prices {
+    margin-top: 25px;
+    margin-bottom: 10px;
     font-size: 18px;
     font-weight: 400;
 }
@@ -63,6 +64,10 @@ header img:nth-child(2) {
     transform: rotate(-45deg);
 }
 
-.text-tamanhos {
-    margin-top: 50px;
+.text-sizes {
+    margin-top: 45px;
+}
+
+.text-prices {
+    margin-top: 40px;
 }
