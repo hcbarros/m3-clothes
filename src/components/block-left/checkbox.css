@@ -81,12 +81,12 @@
 
 .line-check {
     display: flex;    
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
 }
 
 .line-check label {
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 

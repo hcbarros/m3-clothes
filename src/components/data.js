@@ -25,7 +25,7 @@ export const arrayChecked = [false,false,false,false,false,
                              false,false,false,false,false,false];
 
 
-export const arrayClothers = [
+export const arrayClothes = [
 
             {
                 image: image2,

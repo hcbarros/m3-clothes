@@ -1,8 +1,10 @@
 
 import './main.css';
+import './block-right.css';
 import React from 'react';
 import $ from 'jquery';
 import BloclLeft from '../components/block-left/block-left';
+import { arrayClothes } from '../components/data';
 import logo from '../images/logo-m3.png';
 import bag from '../images/bag.png';
 
@@ -38,15 +40,31 @@ export default function Main() {
 
             <div className="line-header"></div>
 
-            <div className="body-clothers">
+            <div className="body-clothes">
             
                 <BloclLeft />
 
-                <div className="clothers">
+                <div className="block-right">
 
+
+                    <div></div>
+
+
+                    <div className="wrapper-clothes">
+
+                            {arrayClothes.map((c, i) => 
+                                <div className="clothing">
+                                        <img src={c.image} alt="image clothing" />
+                                        <div className="description">{c.description}</div>
+                                        <div className="price">{c.price}</div>
+                                        <div className="promotion">{c.promotion}</div>
+                                        <button>COMPRAR</button>
+                                </div>)}
+
+                    </div>
                     
 
-                    
+                    <button className="btn-loader">CARREGAR MAIS</button>            
 
                 </div>
 

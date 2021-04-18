@@ -16,7 +16,7 @@ header img:nth-child(2) {
     border-bottom: 1px solid #999;
 }
 
-.body-clothers {
+.body-clothes {
     font-family: 'Open Sans', sans-serif;
     margin-inline: 10%;
     margin-top: 30px;
@@ -24,3 +24,26 @@ header img:nth-child(2) {
     justify-content: space-between;
 }
 
+
+@media (max-width: 1280px) {
+    header, .body-clothes {
+        margin-inline: 7%;            
+    }
+}
+
+@media (max-width: 1050px) {
+    header, .body-clothes {
+        margin-inline: 10%;            
+    }
+}
+
+@media (max-width: 900px) {
+    header, .body-clothes {
+        margin-inline: 7%;            
+    }
+}
+
+@media (max-width: 770px) {
+ 
+    
+}
