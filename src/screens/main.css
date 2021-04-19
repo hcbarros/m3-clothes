@@ -45,5 +45,11 @@ header img:nth-child(2) {
 
 @media (max-width: 770px) {
  
-    
+    .b-left {
+        display: none;
+    }
+
+    .body-clothes {
+        justify-content: center;
+    }
 }

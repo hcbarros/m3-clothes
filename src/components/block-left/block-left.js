@@ -2,15 +2,17 @@
 import '../index.css';
 import './dropdown.css';
 import './checkbox.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import $ from 'jquery';
 import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import { arrayColors, arraySizes, arrayPrices, 
          arrayChecked } from '../data';
 
 
-export default function BloclLeft() {
+export default function BlockLeft() {
 
-    const [verCores, setVerCores] = useState(false);   
+    const [verCores, setVerCores] = useStateWithCallbackLazy(false);   
+    const [init, setInit] = useState(true);
     const [btnArray, setBtnArray] = useState([]);
     const [gridChecked, setGridChecked] = useStateWithCallbackLazy(arrayChecked);
 
@@ -39,11 +41,17 @@ export default function BloclLeft() {
         setBtnArray([], () => {});
 
     }
+    
+    
+    const blindEffect = () => {
+        setVerCores(!verCores);
+        $(".line-check-blind").toggle( "blind" );
+    }
 
     const displayChecks = (array, obj) => {
 
         return array.map((text, index) => 
-            <div className={obj.drop ? "line-check check-drop" : "line-check"}>
+            <div className={obj.drop ? "line-check-blind" : "line-check"}>
                 <label class={obj.sizes ? "container-check-grid" : "container-check"}>                        
                     <input type="checkbox" name={JSON.stringify(obj)} 
                         value={index} onClick={(evt) => checkAction(evt)} 
@@ -57,6 +65,10 @@ export default function BloclLeft() {
         );  
     }  
 
+    useEffect(() => {
+        $(".line-check-blind").hide();
+    },[init]);
+
 
     return (
   
@@ -67,9 +79,9 @@ export default function BloclLeft() {
                     
             {displayChecks(arrayColors.slice(0,5), {colors: true})}
 
-            {verCores && displayChecks(arrayColors.slice(5,10), {drop: true, colors: true})}
+            {displayChecks(arrayColors.slice(5,10), {drop: true, colors: true})}
 
-            <div className="text-ver-cores" onClick={() => setVerCores(!verCores)}>
+            <div className="text-ver-cores" onClick={() => blindEffect()}>
                 {verCores ? "Esconder últimas cores" : "Ver todas as cores"} 
             <div className={verCores ? "arrow-down" : "arrow-up"}></div></div>
                     
