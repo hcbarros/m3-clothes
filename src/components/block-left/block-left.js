@@ -16,7 +16,6 @@ export default function BlockLeft() {
     const dispatch = useDispatch();
     const [verCores, setVerCores] = useStateWithCallbackLazy(false);   
     const [init, setInit] = useState(true);
-    const [btnArray, setBtnArray] = useState([]);
     const [gridChecked, setGridChecked] = useStateWithCallbackLazy(arrayChecked);
 
 
@@ -70,10 +69,10 @@ export default function BlockLeft() {
             if(find) options.push(c);
         });
 
+        options = options.length === 0 ? arrayClothes : options;  
+
         dispatch(setOptions(options));
         dispatch(setFilter(objFilter));
-        setBtnArray([], () => {});
-
     }
     
     

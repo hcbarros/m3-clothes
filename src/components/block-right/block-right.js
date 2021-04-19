@@ -19,7 +19,7 @@ export default function BlockRight() {
 
     useEffect(() => {
 
-       loadClothes(options.options);
+       loadClothes(options.options, true);
        $(".order-option").hide();
 
     },[options]);
@@ -60,7 +60,7 @@ export default function BlockRight() {
         loadClothes(arr,true);        
     }
 
-    const loadClothes = (array, order) => {
+    const loadClothes = (array, reset) => {
 
        let arr = array;
        if(arr.length === 0) return;
@@ -69,7 +69,7 @@ export default function BlockRight() {
        let second = arr.length <= min ? [] :
                     arr.slice(min, arr.length); 
     
-       let temp = order ? first : clothesLoaded.concat(first);                    
+       let temp = reset ? first : clothesLoaded.concat(first);                    
        setClothesLoaded(temp);
        setClothes(second);
     }
@@ -115,7 +115,7 @@ export default function BlockRight() {
             </div>
 
             <button className="btn-loader" 
-            onClick={() => loadClothes(clothes)}>CARREGAR MAIS</button>            
+            onClick={() => loadClothes(clothes, false)}>CARREGAR MAIS</button>            
 
         </div>
     );
