@@ -3,7 +3,7 @@ import {combineReducers} from 'redux'
 import { arrayClothes } from '../components/data';
 
 
-const initialFilter = {colors: [], prices: [], sizes: []};
+const initialFilter = {id: [], colors: [], prices: [], sizes: []};
 
 const filter = (state = {filter: initialFilter}, action) => {
     return action.type === 'filter' ? 

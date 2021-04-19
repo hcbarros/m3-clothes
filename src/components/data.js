@@ -27,7 +27,8 @@ export const arrayChecked = [false,false,false,false,false,
 
 export const arrayClothes = [
 
-            {
+            {   
+                id: 1,
                 image: image2,
                 description: 'CAMISETA MESCLA',
                 price: 'R$ 28,00',
@@ -38,8 +39,8 @@ export const arrayClothes = [
                 sizes: ['M','U','36','42','46'],                
                 range: 0
             },
-
             {
+                id: 2,
                 image: image3,
                 description: 'SAIA EM COURO',
                 price: 'R$ 398,00',
@@ -51,6 +52,7 @@ export const arrayClothes = [
                 range: 3    
             },
             {
+                id: 3,
                 image: image4,
                 description: 'CARDIGAN TIGRE',
                 price: 'R$ 398,00',
@@ -62,6 +64,7 @@ export const arrayClothes = [
                 range: 3    
             },
             {
+                id: 4,
                 image: image5,
                 description: 'CARDIGAN OFF WHITE',
                 price: 'R$ 99,90',
@@ -73,6 +76,7 @@ export const arrayClothes = [
                 range: 1    
             },
             {
+                id: 5,
                 image: image6,
                 description: 'BODY LEOPARDO',
                 price: 'R$ 129,90',
@@ -84,6 +88,7 @@ export const arrayClothes = [
                 range: 1    
             },
             {
+                id: 6,
                 image: image7,
                 description: 'CASACO PELOS',
                 price: 'R$ 398,00',
@@ -95,6 +100,7 @@ export const arrayClothes = [
                 range: 3    
             },
             {
+                id: 7,
                 image: image8,
                 description: 'CROPPED STRIPES',
                 price: 'R$ 120,00',
@@ -106,6 +112,7 @@ export const arrayClothes = [
                 range: 1    
             },
             {
+                id: 8,
                 image: image9,
                 description: 'CAMISA TRANSPARENTE',
                 price: 'R$ 398,00',
@@ -117,6 +124,7 @@ export const arrayClothes = [
                 range: 3    
             },
             {
+                id: 9,
                 image: image10,
                 description: 'POCHETE CLUTCH',
                 price: '99,00',

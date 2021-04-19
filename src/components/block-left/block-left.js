@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery';
 import { setFilter, setOptions } from '../../actions/actions';
 import { arrayColors, arraySizes, arrayPrices, 
-         arrayChecked } from '../data';
+         arrayChecked, arrayClothes } from '../data';
 
 
 export default function BlockLeft() {
@@ -38,7 +38,6 @@ export default function BlockLeft() {
         if(obj.colors) {
             objFilter.colors = setArray(checked, objFilter.colors, value.text);
         }
-
         else if(obj.sizes) {
             let array = gridChecked;
             array[value.index] = evt.target.checked;
@@ -46,12 +45,32 @@ export default function BlockLeft() {
 
             objFilter.sizes = setArray(checked, objFilter.sizes, value.text);
         }
-
         else {
-            objFilter.prices = setArray(checked, objFilter.prices, value.text);
+            objFilter.prices = setArray(checked, objFilter.prices, value.index);
         }
 
-        alert(objFilter.sizes)
+        let options = [];
+        arrayClothes.map(c => {
+
+            let find = false;
+            objFilter.colors.map(color => {
+                if(c.colors.indexOf(color) >= 0 &&
+                objFilter.id.indexOf(c.id) < 0) find = true;    
+            });
+            if(!find) {
+                objFilter.sizes.map(size => {
+                    if(c.sizes.indexOf(size) >= 0 &&
+                    objFilter.id.indexOf(c.id) < 0) find = true;    
+                });  
+            }
+            if(!find) {
+                if(objFilter.prices.indexOf(c.range) >= 0 &&
+                objFilter.id.indexOf(c.id) < 0) find = true;    
+            }
+            if(find) options.push(c);
+        });
+
+        dispatch(setOptions(options));
         dispatch(setFilter(objFilter));
         setBtnArray([], () => {});
 
