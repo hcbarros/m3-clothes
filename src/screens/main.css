@@ -7,9 +7,33 @@ header {
     margin-inline: 10%;
 }
 
-header img:nth-child(2) {
+header div img, .h-cart {
     width: 20px;
     height: 20px;
+}
+
+.block-cart {
+    display: flex;
+    margin-right: 15px;
+}
+
+.h-cart {  
+    position: absolute;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 75%;
+    background-color: #00bfff;
+    margin-left: 12px;
+    margin-top: 7px;
+}
+
+.h-cart a {
+    margin-top: 2.2px;
+    margin-right: 0.8px;
 }
 
 .line-header {
@@ -19,7 +43,7 @@ header img:nth-child(2) {
 .body-clothes {
     font-family: 'Open Sans', sans-serif;
     margin-inline: 10%;
-    margin-top: 30px;
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
 }

@@ -12,3 +12,10 @@ export const setFilter = (filter) => {
         payload: filter
     }
 }
+
+export const setOptions = (options) => {
+    return {
+        type: 'options',
+        payload: options
+    }
+}

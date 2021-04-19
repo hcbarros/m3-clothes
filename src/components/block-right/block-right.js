@@ -2,42 +2,72 @@
 import './block-right.css';
 import React, { useState, useEffect, cloneElement } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import $ from 'jquery';
-import { setCart, setFilter } from '../../actions/actions';
+import { setCart } from '../../actions/actions';
 
 
 export default function BlockRight() {
 
-    const filter = useSelector(state => state.filter);
+    const options = useSelector(state => state.options);
+    const cart = useSelector(state => state.cart);
     const [clothes, setClothes] = useStateWithCallbackLazy([]);
     const [clothesLoaded, setClothesLoaded] = useState([]);
-    const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
+    
 
     useEffect(() => {
 
-       loadClothing(true);
+       loadClothes(options.options);
        $(".order-option").hide();
 
-    },[filter]);
+    },[options]);
 
 
     const blindEffect = () => {
-        // setVerCores(!verCores);
         $(".order-option").toggle( "blind" );
     }
 
-    const loadClothing = (changed) => {
+    const insertItem = (c) => {
+        let array = cart.cart;
+        array.push(c);
+        dispatch(setCart(array));
+    }
 
-       let arr = changed ? filter.filter : clothes;
+    const orderBy = (value) => {
+
+        let arr = [];
+        if(value === 'low')
+            arr = options.options.sort(function(a,b) {
+                return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
+            });
+        else if(value === 'high')
+            arr = options.options.sort(function(a,b) {
+                return a.value > b.value ? -1 : a.value < b.value ? 1 : 0;
+            });
+        else {
+            arr = options.options.sort(function(a,b) {
+                let da = new Date(a.date);
+                let db = new Date(b.date);
+                return da > db ? -1 : da < db ? 1 : 0;
+            });
+        }    
+
+        loadClothes(arr,true);        
+    }
+
+    const loadClothes = (array, order) => {
+
+       let arr = array;
        if(arr.length === 0) return;
        let min = arr.length < 3 ? arr.length : 3; 
        let first = arr.slice(0, min); 
        let second = arr.length <= min ? [] :
                     arr.slice(min, arr.length); 
-
-       setClothesLoaded(clothesLoaded.concat(first));
+    
+       let temp = order ? first : clothesLoaded.concat(first);                    
+       setClothesLoaded(temp);
        setClothes(second);
     }
 
@@ -46,13 +76,25 @@ export default function BlockRight() {
 
         <div className="block-right">
 
+
+          <div className="text-shirts">Blusas</div>
+
+          <div className="buttons-mobile">
+                <button>Filtrar</button>
+                <button>Ordenar</button>
+          </div>  
+
+
           <div className="select-option" onClick={() => blindEffect()}>  
             <div className="order" >Ordenar por:
                 <div className="arrow-down-option"></div>
             </div>
-            <div className="new-option order-option">Mais recentes</div>
-            <div className="low-price order-option">Menor preço</div>
-            <div className="high-price order-option">Maior preço:</div>
+            <div className="new-option order-option"
+                 onClick={()=> orderBy('new')}>Mais recentes</div>
+            <div className="low-price order-option"
+                 onClick={()=> orderBy('low')}>Menor preço</div>
+            <div className="high-price order-option"
+                 onClick={()=> orderBy('high')}>Maior preço:</div>
           </div>
 
 
@@ -64,13 +106,13 @@ export default function BlockRight() {
                         <div className="description">{c.description}</div>
                         <div className="price">{c.price}</div>
                         <div className="promotion">{c.promotion}</div>
-                        <button>COMPRAR</button>
+                        <button onClick={() => insertItem(c)}>COMPRAR</button>
                     </div>)}
 
             </div>
 
             <button className="btn-loader" 
-            onClick={() => loadClothing(false)}>CARREGAR MAIS</button>            
+            onClick={() => loadClothes(clothes)}>CARREGAR MAIS</button>            
 
         </div>
     );
