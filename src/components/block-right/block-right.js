@@ -38,21 +38,24 @@ export default function BlockRight() {
     const orderBy = (value) => {
 
         let arr = [];
-        if(value === 'low')
-            arr = options.options.sort(function(a,b) {
-                return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
-            });
-        else if(value === 'high')
-            arr = options.options.sort(function(a,b) {
-                return a.value > b.value ? -1 : a.value < b.value ? 1 : 0;
-            });
-        else {
-            arr = options.options.sort(function(a,b) {
-                let da = new Date(a.date);
-                let db = new Date(b.date);
-                return da > db ? -1 : da < db ? 1 : 0;
-            });
-        }    
+        switch(value) {
+            case 'low':
+                arr = options.options.sort(function(a,b) {
+                    return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
+                });
+                break;
+            case 'high':
+                arr = options.options.sort(function(a,b) {
+                    return a.value > b.value ? -1 : a.value < b.value ? 1 : 0;
+                });
+                break;    
+            default:
+                arr = options.options.sort(function(a,b) {
+                    let da = new Date(a.date);
+                    let db = new Date(b.date);
+                    return da > db ? -1 : da < db ? 1 : 0;
+                });    
+        }
 
         loadClothes(arr,true);        
     }
