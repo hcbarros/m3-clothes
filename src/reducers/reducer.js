@@ -1,9 +1,23 @@
 
 import {combineReducers} from 'redux'
-import { arrayClothes } from '../components/data';
+import { arrayClothes, arrayColors as ac, arrayPrices as ap, initialFilter,
+         arraySizes as asizes } from '../components/data';
 
 
-const initialFilter = {id: [], colors: [], prices: [], sizes: []};
+const arrayColors = (state = {arrayColors: ac}, action) => {
+    return action.type === 'arrayColors' ? 
+          { ...state, arrayColors: action.payload } : state;            
+}
+
+const arraySizes = (state = {arraySizes: asizes}, action) => {
+    return action.type === 'arraySizes' ? 
+          { ...state, arraySizes: action.payload } : state;            
+}
+
+const arrayPrices = (state = {arrayPrices: ap}, action) => {
+    return action.type === 'arrayPrices' ? 
+          { ...state, arrayPrices: action.payload } : state;            
+}
 
 const filter = (state = {filter: initialFilter}, action) => {
     return action.type === 'filter' ? 
@@ -24,7 +38,10 @@ const options = (state = {options: arrayClothes}, action) => {
 const reducer = combineReducers({
     filter,
     cart,
-    options
+    options,
+    arraySizes,
+    arrayPrices,
+    arrayColors
 });
 
 

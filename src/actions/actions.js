@@ -19,3 +19,24 @@ export const setOptions = (options) => {
         payload: options
     }
 }
+
+export const setColors = (colors) => {
+    return {
+        type: 'arrayColors',
+        payload: colors
+    }
+}
+
+export const setSizes = (sizes) => {
+    return {
+        type: 'arraySizes',
+        payload: sizes
+    }
+}
+
+export const setPrices = (prices) => {
+    return {
+        type: 'arrayPrices',
+        payload: prices
+    }
+}
