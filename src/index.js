@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from "redux-thunk";
 import './index.css';
 import Main from './screens/main';
 import reducer from './reducers/reducer';
 
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 
 ReactDOM.render(

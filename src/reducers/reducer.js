@@ -1,36 +1,49 @@
 
 import {combineReducers} from 'redux'
-import { arrayClothes, arrayColors as ac, arrayPrices as ap, initialFilter,
-         arraySizes as asizes } from '../components/data';
+import { arrayClothes, arrayPrices, initialFilter,
+         arraySizes, arrayColors } from '../components/data';
+
+export const REDUCE_COLORS = 'reduceColors';
+export const REDUCE_SIZES = 'reduceSizes';
+export const REDUCE_PRICES = 'reducePrices';
+export const FILTER = 'filter';
+export const CART = 'cart';
+export const OPTIONS = 'options';
+export const REDUCE_CHECKED = 'reduceChecked';
 
 
-const arrayColors = (state = {arrayColors: ac}, action) => {
-    return action.type === 'arrayColors' ? 
-          { ...state, arrayColors: action.payload } : state;            
+const reduceChecked = (state = {reduceChecked: []}, action) => {
+    return action.type === REDUCE_CHECKED ? 
+          { ...state, reduceChecked: action.payload } : state;            
 }
 
-const arraySizes = (state = {arraySizes: asizes}, action) => {
-    return action.type === 'arraySizes' ? 
-          { ...state, arraySizes: action.payload } : state;            
+const reduceColors = (state = {reduceColors: arrayColors}, action) => {
+    return action.type === REDUCE_COLORS ? 
+          { ...state, reduceColors: action.payload } : state;            
 }
 
-const arrayPrices = (state = {arrayPrices: ap}, action) => {
-    return action.type === 'arrayPrices' ? 
-          { ...state, arrayPrices: action.payload } : state;            
+const reduceSizes = (state = {reduceSizes: arraySizes}, action) => {
+    return action.type === REDUCE_SIZES ? 
+          { ...state, reduceSizes: action.payload } : state;            
+}
+
+const reducePrices = (state = {reducePrices: arrayPrices}, action) => {
+    return action.type === REDUCE_PRICES ? 
+          { ...state, reducePrices: action.payload } : state;            
 }
 
 const filter = (state = {filter: initialFilter}, action) => {
-    return action.type === 'filter' ? 
+    return action.type === FILTER ? 
           { ...state, filter: action.payload } : state;            
 }
 
 const cart = (state = {cart: []}, action) => {
-    return action.type === 'cart' ? 
+    return action.type === CART ? 
           { ...state, cart: action.payload } : state;            
 }
 
 const options = (state = {options: arrayClothes}, action) => {
-    return action.type === 'options' ? 
+    return action.type === OPTIONS ? 
           { ...state, options: action.payload } : state;            
 }
 
@@ -39,9 +52,10 @@ const reducer = combineReducers({
     filter,
     cart,
     options,
-    arraySizes,
-    arrayPrices,
-    arrayColors
+    reduceSizes,
+    reducePrices,
+    reduceColors,
+    reduceChecked
 });
 
 

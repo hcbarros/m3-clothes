@@ -6,27 +6,36 @@ import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import { useSelector, useDispatch } from 'react-redux';
 import $ from 'jquery';
 import { setFilter, setOptions, setColors, setPrices, 
-         setSizes } from '../../actions/actions';
-import { arrayChecked, arrayClothes } from '../data';
+         setSizes, setChecked } from '../../actions/actions';
+import { arrayClothes, arrayPrices,
+         arrayColors, arraySizes } from '../data';
 
 
 export default function BlockLeft() {
 
     const filter = useSelector(state => state.filter);
-    const arrayColors = useSelector(state => state.arrayColors);
-    const arraySizes = useSelector(state => state.arraySizes);
-    const arrayPrices = useSelector(state => state.arrayPrices);
+    const reduceColors = useSelector(state => state.reduceColors);
+    const reduceSizes = useSelector(state => state.reduceSizes);
+    const reducePrices = useSelector(state => state.reducePrices);
+    const reduceChecked = useSelector(state => state.reduceChecked);
     const dispatch = useDispatch();
     const [verCores, setVerCores] = useStateWithCallbackLazy(false);   
     const [init, setInit] = useState(true);
-    const [gridChecked, setGridChecked] = useStateWithCallbackLazy(arrayChecked);
+    
 
 
     const setArray = (checked, array, text) => {
-        if(checked) array.push(text);
+
+        let arrChecked = reduceChecked.reduceChecked;
+        if(checked) {
+            array.push(text);
+            arrChecked.push(text);
+        }
         else {
             array = array.filter(c => c != text);
+            arrChecked = arrChecked.filter(c => c != text);
         }
+        dispatch(setChecked(arrChecked));
         return array;
     }
 
@@ -61,31 +70,47 @@ export default function BlockLeft() {
             if(find && objFilter.id.indexOf(c.id) < 0) options.push(c);
         });
 
-        alert(JSON.stringify(options))
-
+        
 
         let arrColors = [];
         let arrSizes = [];
-        let arrPrices = [];
+        let arrPrices = []   ;
         if(options.length > 0) {
 
-            options.map(o => {  
-                
-                alert(JSON.stringify(o))    
+            options.map(o => {
 
-                o.colors.map(c => {
-                    if(arrColors.indexOf(c) < 0) arrColors.push(c); 
-                }); 
-                o.sizes.map(s => {
-                    if(arrSizes.indexOf(s) < 0) arrSizes.push(s); 
-                }); 
-                
-                if(arrPrices.indexOf(o.range) < 0) arrPrices.push(o.range); 
-                
-            }); 
-            dispatch(setColors(arrColors));
-            dispatch(setSizes(arrSizes));
-            dispatch(setPrices(arrPrices));
+                if(key == 'colors') {
+                    arrColors = reduceColors.reduceColors;
+                    if(arrPrices.indexOf(arrayPrices[o.range]) < 0) {
+                        arrPrices.push(arrayPrices[o.range]);
+                    }
+                    o.sizes.map(s => {
+                        if(arrSizes.indexOf(s) < 0) arrSizes.push(s);                
+                    })
+                }
+                else if(key == 'sizes') {
+                    arrSizes = reduceSizes.reduceSizes;
+                    if(arrPrices.indexOf(arrayPrices[o.range]) < 0) {
+                        arrPrices.push(arrayPrices[o.range]);
+                    }
+                    o.colors.map(c => {
+                        if(arrColors.indexOf(c) < 0) arrColors.push(c);                
+                    })
+                }
+                else {
+                    arrPrices = reducePrices.reducePrices;
+                    o.sizes.map(s => {
+                        if(arrSizes.indexOf(s) < 0) arrSizes.push(s);                
+                    })
+                    o.colors.map(c => {
+                        if(arrColors.indexOf(c) < 0) arrColors.push(c);                
+                    })
+                }
+            });
+
+            dispatch(setColors(arrayColors.filter(c => arrColors.indexOf(c) >= 0)));
+            dispatch(setSizes(arraySizes.filter(s => arrSizes.indexOf(s) >= 0)));
+            dispatch(setPrices(arrayPrices.filter(p => arrPrices.indexOf(p) >= 0)));
         }
         //options = options.length === 0 ? arrayClothes : options;  
 
@@ -93,6 +118,7 @@ export default function BlockLeft() {
         dispatch(setFilter(objFilter));
 
     }
+
 
     const checkAction = (evt) => {
   
@@ -106,10 +132,6 @@ export default function BlockLeft() {
             setDispatch(objFilter,'colors');
         }
         else if(obj.sizes) {
-            let array = gridChecked;
-            array[value.index] = evt.target.checked;
-            setGridChecked(array, () => {});
-
             objFilter.sizes = setArray(checked, objFilter.sizes, value.text);
             setDispatch(objFilter,'sizes');
         }
@@ -118,52 +140,7 @@ export default function BlockLeft() {
             setDispatch(objFilter,'prices');
         }
 
-        // let options = [];
-        // arrayClothes.map(c => {
-
-        //     let colors = null;
-        //     let sizes = null;
-        //     let find = false;
-
-          
-        //     colors = objFilter.colors.filter(color => 
-        //             c.colors.indexOf(color) >= 0);
-              
-        //     sizes = objFilter.sizes.filter(size => 
-        //             c.sizes.indexOf(size) >= 0);    
-            
-        //     if(objFilter.prices.indexOf(c.range) >= 0 &&
-        //     objFilter.id.indexOf(c.id) < 0) {
-    
-        //     }
-        // });
-
-        // //options = options.length === 0 ? arrayClothes : options;  
-
-        // dispatch(setOptions(options));
-        // dispatch(setFilter(objFilter));
-
-
-        // let find = false;
-        // objFilter.colors.map(color => {
-        //     if(c.colors.indexOf(color) >= 0 &&
-        //     objFilter.id.indexOf(c.id) < 0) find = true;    
-        // });
-        // if(!find) {
-        //     objFilter.sizes.map(size => {
-        //         if(c.sizes.indexOf(size) >= 0 &&
-        //         objFilter.id.indexOf(c.id) < 0) find = true;    
-        //     });  
-        // }
-        // if(!find) {
-        //     if(objFilter.prices.indexOf(c.range) >= 0 &&
-        //     objFilter.id.indexOf(c.id) < 0) find = true;    
-        // }
-        // if(find) options.push(c);
-
-
-
-
+     
     }
     
     
@@ -180,8 +157,10 @@ export default function BlockLeft() {
                     <input type="checkbox" name={JSON.stringify(obj)} 
                         value={JSON.stringify({index:index,text:text})} 
                         onClick={(evt) => checkAction(evt)} 
+                        checked={reduceChecked.reduceChecked.indexOf(text) >= 0}
                     />
-                    <span class={!obj.sizes ? "checkmark" : gridChecked[index] ?  
+                    <span class={!obj.sizes ? "checkmark" : 
+                    reduceChecked.reduceChecked.indexOf(text) >= 0 ?  
                     "checkmark-grid-active" : "checkmark-grid"}>
                         {obj.sizes && text}
                     </span>
@@ -202,9 +181,9 @@ export default function BlockLeft() {
             <div className="text-clothers">Blusas</div>
             <div className="text-colors">CORES</div>
 
-            {displayChecks(arrayColors.arrayColors.slice(0,5), {colors: true})}
+            {displayChecks(reduceColors.reduceColors.slice(0,5), {colors: true})}
 
-            {displayChecks(arrayColors.arrayColors.slice(5,10), {drop: true, colors: true})}
+            {displayChecks(reduceColors.reduceColors.slice(5,10), {drop: true, colors: true})}
 
             <div className="text-ver-cores" onClick={() => blindEffect()}>
                 {verCores ? "Esconder últimas cores" : "Ver todas as cores"} 
@@ -212,11 +191,11 @@ export default function BlockLeft() {
                     
             <div className="text-sizes">TAMANHOS</div>
 
-            {<div className="wrapper"> {displayChecks(arraySizes.arraySizes, {sizes: true})} </div> }
+            {<div className="wrapper"> {displayChecks(reduceSizes.reduceSizes, {sizes: true})} </div> }
 
             <div className="text-prices">FAIXA DE PREÇO</div>
 
-            {displayChecks(arrayPrices.arrayPrices.slice(0,5), {prices: true})}
+            {displayChecks(reducePrices.reducePrices.slice(0,5), {prices: true})}
 
         </div>
     );

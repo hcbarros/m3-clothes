@@ -24,10 +24,6 @@ export const arrayPrices = ['de R$0 até R$50','de R$51 até R$150','de R$151 at
 export const initialFilter = {id: [], colors: [], prices: [], sizes: []};                                     
 
 
-export const arrayChecked = [false,false,false,false,false,
-                             false,false,false,false,false,false];
-
-
 export const arrayClothes = [
 
             {   
@@ -50,7 +46,7 @@ export const arrayClothes = [
                 value: 398.00,
                 date: '2021-03-02',
                 promotion: 'até 5x de R$30,00',    
-                colors: ['Rosa','Laranja','Vermelho','AZUL'],
+                colors: ['Rosa','Laranja','Vermelho','Azul'],
                 sizes: ['P','G','GG','40','42'],                
                 range: 3    
             },
