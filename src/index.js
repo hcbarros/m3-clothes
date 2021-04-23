@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import Main from './screens/main';
 import MobileFilter from './screens/mobile-filter';
+import MobileSort from './screens/mobile-sort';
 import reducer from './reducers/reducer';
 
 import reportWebVitals from './reportWebVitals';
@@ -20,6 +21,7 @@ ReactDOM.render(
             <Switch>
                   <Route path="/" exact={true} component={Main} />
                   <Route path="/filter" component={MobileFilter} />
+                  <Route path="/sort" component={MobileSort} />
             </Switch>
          </BrowserRouter>   
      </Provider>

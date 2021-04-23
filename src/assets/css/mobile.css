@@ -1,5 +1,5 @@
 
-.mobile-filter {
+.mobile-filter, .mobile-sort {
     font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-direction: column;
@@ -96,4 +96,14 @@
 
 .mobile-sizes, .mobile-btn-sizes {
     margin-top: 10px;
+}
+
+.more-recents {
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+.sort-price {
+    margin-top: 40px;
+    font-size: 17px;
 }

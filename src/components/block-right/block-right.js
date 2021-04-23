@@ -15,6 +15,7 @@ export default function BlockRight() {
     const [clothes, setClothes] = useStateWithCallbackLazy([]);
     const [clothesLoaded, setClothesLoaded] = useState([]);
     const [filter, setFilter] = useState(false);
+    const [sort, setSort] = useState(false);
     const dispatch = useDispatch();
     
 
@@ -84,12 +85,13 @@ export default function BlockRight() {
         <div className="block-right">
 
           {filter && <Redirect to="/filter" />}
+          {sort && <Redirect to="/sort" />}  
 
           <div className="text-shirts">Blusas</div>
 
           <div className="buttons-mobile">
                 <button onClick={() => setFilter(true)}>Filtrar</button>
-                <button>Ordenar</button>
+                <button onClick={() => setSort(true)}>Ordenar</button>
           </div>  
 
 
