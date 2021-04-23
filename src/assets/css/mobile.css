@@ -1,0 +1,99 @@
+
+.mobile-filter {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    margin-inline: 7%;
+    color: #777;
+}
+
+.mobile-header div:nth-child(1) {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.mobile-header div:nth-child(2) {
+    color: #000;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.line-mobile {
+    border-bottom: 1px solid #ccc;
+}
+
+.mobile-body {
+    margin-inline: 7%;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mobile-checks {
+    margin-top: 12px;
+}
+
+.mobile-checks > div:nth-child(1),
+.mobile-sizes > div:nth-child(1) {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.mobile-block-checks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mobile-btn-blind, 
+.mobile-btn-sizes {
+    font-size: 35px;
+    margin-right: 2.5px;
+    cursor: pointer;
+}
+
+.mobile-display {
+    margin-left: 24px;
+    margin-top: 20px;
+}
+
+.mobile-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-inline: 7%;
+}
+
+.mobile-buttons button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;    
+    width: 47%;
+    height: 45px;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-aplicar {
+    background-color: #00bfff;
+    color: #fff;
+    border: none;
+}
+
+.btn-limpar {
+    background-color: #fff;
+    color: #777;
+    border: 1px solid #bbb;
+}
+
+.mobile-sizes, .mobile-btn-sizes {
+    margin-top: 10px;
+}
