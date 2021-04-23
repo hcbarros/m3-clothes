@@ -6,19 +6,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { arrayColors, arraySizes, arrayPrices } from '../components/data';
 import BlockCheck from '../components/mobile/block-check';
 import Header from '../components/mobile/header';
-import { setChecked, setFilter } from '../actions/actions';
+import { setChecked, setFilter, setOptions } from '../actions/actions';
+import { order } from '../components/order/order';
 
 
 export default function MobileSort() {
 
     const [redirect, setRedirect] = useState(false);
-    const reduceChecked = useSelector(state => state.reduceChecked);
     const options = useSelector(state => state.options);
     const dispatch = useDispatch();
 
-    const setDispatch = () => {
-        dispatch(setChecked([]));
-        dispatch(setFilter({id: [], colors: [], prices: [], sizes: []}));
+    const orderBy = (value) => {
+
+        const arr = order(value, options.options);
+        dispatch(setOptions(arr));
+        setRedirect(true);
     }
 
 
@@ -34,9 +36,14 @@ export default function MobileSort() {
 
             <div className="mobile-body">
                 
-                <div className="more-recents">Mais recentes</div>
-                <div className="sort-price">Menor preço</div>
-                <div className="sort-price">Maior preço</div>    
+                <div className="more-recents" 
+                onClick={()=> orderBy('new')}>Mais recentes</div>
+                
+                <div className="sort-price" 
+                onClick={()=> orderBy('low')}>Menor preço</div>
+                
+                <div className="sort-price" 
+                onClick={()=> orderBy('high')}>Maior preço</div>    
                 
             </div>
 

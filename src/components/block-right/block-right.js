@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import $ from 'jquery';
 import { setCart } from '../../actions/actions';
+import { order } from '../order/order';
 
 
 export default function BlockRight() {
@@ -39,26 +40,7 @@ export default function BlockRight() {
 
     const orderBy = (value) => {
 
-        let arr = [];
-        switch(value) {
-            case 'low':
-                arr = options.options.sort(function(a,b) {
-                    return a.value < b.value ? -1 : a.value > b.value ? 1 : 0;
-                });
-                break;
-            case 'high':
-                arr = options.options.sort(function(a,b) {
-                    return a.value > b.value ? -1 : a.value < b.value ? 1 : 0;
-                });
-                break;    
-            default:
-                arr = options.options.sort(function(a,b) {
-                    let da = new Date(a.date);
-                    let db = new Date(b.date);
-                    return da > db ? -1 : da < db ? 1 : 0;
-                });    
-        }
-
+        const arr = order(value, options.options);
         loadClothes(arr,true);        
     }
 
