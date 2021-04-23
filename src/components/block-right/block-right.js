@@ -1,5 +1,5 @@
 
-import './block-right.css';
+import '../../assets/css/block-right.css';
 import React, { useState, useEffect, cloneElement } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -14,6 +14,7 @@ export default function BlockRight() {
     const cart = useSelector(state => state.cart);
     const [clothes, setClothes] = useStateWithCallbackLazy([]);
     const [clothesLoaded, setClothesLoaded] = useState([]);
+    const [filter, setFilter] = useState(false);
     const dispatch = useDispatch();
     
 
@@ -63,7 +64,10 @@ export default function BlockRight() {
     const loadClothes = (array, reset) => {
 
        let arr = array;
-       if(arr.length === 0) return;
+       if(arr.length === 0) {
+           if(reset) setClothesLoaded([]); 
+           return;
+       }
        let min = arr.length < 3 ? arr.length : 3; 
        let first = arr.slice(0, min); 
        let second = arr.length <= min ? [] :
@@ -79,11 +83,12 @@ export default function BlockRight() {
 
         <div className="block-right">
 
+          {filter && <Redirect to="/filter" />}
 
           <div className="text-shirts">Blusas</div>
 
           <div className="buttons-mobile">
-                <button>Filtrar</button>
+                <button onClick={() => setFilter(true)}>Filtrar</button>
                 <button>Ordenar</button>
           </div>  
 
@@ -103,7 +108,7 @@ export default function BlockRight() {
 
             <div className="wrapper-clothes">
 
-                {clothesLoaded.map(c => 
+                {clothesLoaded.length > 0 && clothesLoaded.map(c => 
                     <div className="clothing">
                         <img src={c.image} alt="image clothing" />
                         <div className="description">{c.description}</div>
@@ -114,8 +119,12 @@ export default function BlockRight() {
 
             </div>
 
-            <button className="btn-loader" 
+            <button className={clothesLoaded.length > 0 ? "btn-loader" : "hide"} 
             onClick={() => loadClothes(clothes, false)}>CARREGAR MAIS</button>            
+
+
+            <div className={clothesLoaded.length > 0 ? "hide" : "not-found"}>
+                Sua busca não retornou nenhum resultado!</div>            
 
         </div>
     );

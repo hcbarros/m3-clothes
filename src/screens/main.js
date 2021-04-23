@@ -1,12 +1,11 @@
 
-import './main.css';
-import './block-right.css';
+import '../assets/css/main.css';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import BlockLeft from '../components/block-left/block-left';
 import BlockRight from '../components/block-right/block-right';
-import logo from '../images/logo-m3.png';
-import bag from '../images/bag.png';
+import logo from '../assets/images/logo-m3.png';
+import bag from '../assets/images/bag.png';
 
 
 export default function Main() {

@@ -1,13 +1,13 @@
 
-import image2 from '../images/img_2.png';
-import image3 from '../images/img_3.png';
-import image4 from '../images/img_4.png';
-import image5 from '../images/img_5.png';
-import image6 from '../images/img_6.png';
-import image7 from '../images/img_7.png';
-import image8 from '../images/img_8.png';
-import image9 from '../images/img_9.png';
-import image10 from '../images/img_10.png';
+import image2 from '../assets/images/img_2.png';
+import image3 from '../assets/images/img_3.png';
+import image4 from '../assets/images/img_4.png';
+import image5 from '../assets/images/img_5.png';
+import image6 from '../assets/images/img_6.png';
+import image7 from '../assets/images/img_7.png';
+import image8 from '../assets/images/img_8.png';
+import image9 from '../assets/images/img_9.png';
+import image10 from '../assets/images/img_10.png';
 
 
 export const arrayColors = ['Amarelo','Azul','Branco','Cinza','Laranja',

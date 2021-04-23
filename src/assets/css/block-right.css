@@ -149,6 +149,17 @@
     transform: rotate(-45deg);
 }
 
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 65vw;
+    text-align: center;
+}
+
+
 
 @media (max-width: 1180px) {
     .wrapper-clothes {

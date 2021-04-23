@@ -23,27 +23,6 @@ export const setOptions = (options) => {
     }
 }
 
-export const setColors = (colors) => {
-    return {
-        type: reduce.REDUCE_COLORS,
-        payload: colors
-    }
-}
-
-export const setSizes = (sizes) => {
-    return {
-        type: reduce.REDUCE_SIZES,
-        payload: sizes
-    }
-}
-
-export const setPrices = (prices) => {
-    return {
-        type: reduce.REDUCE_PRICES,
-        payload: prices
-    }
-}
-
 export const setChecked = (array) => {
     return {
         type: reduce.REDUCE_CHECKED,
