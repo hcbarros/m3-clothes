@@ -34,6 +34,10 @@ export default function DisplayChecks(props) {
 
         const setDispatch = (objFilter, key) => {
 
+            alert(JSON.stringify(filter.filter));
+            alert(JSON.stringify(reduceChecked.reduceChecked));
+
+
             let options = [];
             const getColors = (c) => {
                 if(objFilter.colors.length > 0) {

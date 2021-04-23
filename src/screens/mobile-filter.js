@@ -3,8 +3,7 @@ import '../assets/css/mobile.css';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { arrayColors, arraySizes, arrayPrices, 
-         initialFilter } from '../components/data';
+import { arrayColors, arraySizes, arrayPrices } from '../components/data';
 import BlockCheck from '../components/mobile/block-check';
 import Header from '../components/mobile/header';
 import { setChecked, setFilter } from '../actions/actions';
@@ -19,7 +18,7 @@ export default function MobileFilter() {
 
     const setDispatch = () => {
         dispatch(setChecked([]));
-        dispatch(setFilter(initialFilter));
+        dispatch(setFilter({id: [], colors: [], prices: [], sizes: []}));
     }
 
 
