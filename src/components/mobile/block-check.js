@@ -8,10 +8,12 @@ import DisplayChecks from '../checkbox/display-checks';
 export default function BlockCheck(props) {
 
     const [init, setInit] = useState(true);
+    const [change, setChange] = useState(false);
 
 
     const blindEffect = () => {
         $("."+props.type+" > *").toggle( "blind" );
+        setChange(!change);
     }
 
     useEffect(() => {
@@ -31,9 +33,11 @@ export default function BlockCheck(props) {
                                    obj={props.obj} />  
                 </div>
             </div>
-            <div className={props.type == "wrapper" ? 
-                "mobile-btn-sizes" : "mobile-btn-blind"} 
-                onClick={() => blindEffect()}>+</div>
+            <div className={props.type == "wrapper" && change ? 
+                "btn-sizes-less" : props.type == "wrapper" && !change ? 
+                "mobile-btn-sizes" : change ? "mobile-btn-less" : 
+                "mobile-btn-blind"} 
+                onClick={() => blindEffect()}>{change ? "—" : "+"}</div>
         </div>    
     );
 }

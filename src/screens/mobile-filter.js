@@ -3,10 +3,10 @@ import '../assets/css/mobile.css';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { arrayColors, arraySizes, arrayPrices } from '../data/data';
+import { arrayColors, arraySizes, arrayPrices, arrayClothes } from '../data/data';
 import BlockCheck from '../components/mobile/block-check';
 import Header from '../components/mobile/header';
-import { setChecked, setFilter } from '../actions/actions';
+import { setChecked, setFilter, setOptions } from '../actions/actions';
 
 
 export default function MobileFilter() {
@@ -16,9 +16,10 @@ export default function MobileFilter() {
     const options = useSelector(state => state.options);
     const dispatch = useDispatch();
 
-    const setDispatch = () => {
+    const clear = () => {
         dispatch(setChecked([]));
         dispatch(setFilter({id: [], colors: [], prices: [], sizes: []}));
+        dispatch(setOptions(arrayClothes));
     }
 
 
@@ -50,7 +51,7 @@ export default function MobileFilter() {
                 onClick={() => setRedirect(true)}>APLICAR</button>
                 
                 <button className="btn-limpar" 
-                onClick={() => setDispatch()}>LIMPAR</button>
+                onClick={() => clear()}>LIMPAR</button>
             </div>
 
         </div>

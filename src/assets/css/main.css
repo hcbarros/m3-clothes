@@ -18,6 +18,7 @@ header div img, .h-cart {
 }
 
 .h-cart {  
+    font-family: 'Open Sans', sans-serif;
     position: absolute;
     display: flex;  
     align-items: center;
@@ -32,7 +33,6 @@ header div img, .h-cart {
 }
 
 .h-cart a {
-    margin-top: 2.2px;
     margin-right: 0.8px;
 }
 

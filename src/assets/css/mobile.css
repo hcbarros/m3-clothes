@@ -54,10 +54,20 @@
 }
 
 .mobile-btn-blind, 
-.mobile-btn-sizes {
+.mobile-btn-sizes,
+.mobile-btn-less,
+.btn-sizes-less {
     font-size: 35px;
     margin-right: 2.5px;
     cursor: pointer;
+}
+
+.mobile-btn-sizes, .btn-sizes-less {
+    margin-top: 10px;
+}
+
+.mobile-btn-less, .btn-sizes-less {
+    font-size: 25px;
 }
 
 .mobile-display {
@@ -94,7 +104,7 @@
     border: 1px solid #bbb;
 }
 
-.mobile-sizes, .mobile-btn-sizes {
+.mobile-sizes {
     margin-top: 10px;
 }
 
