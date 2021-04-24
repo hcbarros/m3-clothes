@@ -1,6 +1,6 @@
 
 import {combineReducers} from 'redux'
-import { arrayClothes, initialFilter } from '../components/data';
+import { arrayClothes, initialFilter } from '../data/data';
 
 export const FILTER = 'filter';
 export const CART = 'cart';

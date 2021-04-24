@@ -3,10 +3,8 @@ import '../assets/css/mobile.css';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { arrayColors, arraySizes, arrayPrices } from '../components/data';
-import BlockCheck from '../components/mobile/block-check';
 import Header from '../components/mobile/header';
-import { setChecked, setFilter, setOptions } from '../actions/actions';
+import { setOptions } from '../actions/actions';
 import { order } from '../components/order/order';
 
 

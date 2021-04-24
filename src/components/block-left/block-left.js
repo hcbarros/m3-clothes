@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useStateWithCallbackLazy } from 'use-state-with-callback';
 import $ from 'jquery';
 import DisplayChecks from '../checkbox/display-checks';
-import { arrayPrices, arrayColors, arraySizes } from '../data';
+import { arrayPrices, arrayColors, arraySizes } from '../../data/data';
 
 
 export default function BlockLeft() {

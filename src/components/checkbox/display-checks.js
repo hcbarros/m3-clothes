@@ -4,7 +4,7 @@ import '../../assets/css/checkbox.css';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter, setOptions, setChecked } from '../../actions/actions';
-import { arrayClothes, arrayPrices } from '../data';
+import { arrayClothes, arrayPrices } from '../../data/data';
 
 
 export default function DisplayChecks(props) {
