@@ -14,3 +14,8 @@ Link:
 - Ordena os produtos por preço e data de postagem (mais recente);
 - Adicionar produto ao carrinho;
 - Carrega mais produtos.
+
+### Como executar:
+
+- npm install ou yarn install para instalar as dependências
+- npm start ou yarn start para iniciar o servidor
