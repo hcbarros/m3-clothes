@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/m3-clothes/static/css/main.4ba2e9bd.chunk.css",
-    "main.js": "/m3-clothes/static/js/main.f9d23870.chunk.js",
-    "main.js.map": "/m3-clothes/static/js/main.f9d23870.chunk.js.map",
-    "runtime-main.js": "/m3-clothes/static/js/runtime-main.943430a5.js",
-    "runtime-main.js.map": "/m3-clothes/static/js/runtime-main.943430a5.js.map",
-    "static/js/2.5fc408f7.chunk.js": "/m3-clothes/static/js/2.5fc408f7.chunk.js",
-    "static/js/2.5fc408f7.chunk.js.map": "/m3-clothes/static/js/2.5fc408f7.chunk.js.map",
-    "static/js/3.e8610931.chunk.js": "/m3-clothes/static/js/3.e8610931.chunk.js",
-    "static/js/3.e8610931.chunk.js.map": "/m3-clothes/static/js/3.e8610931.chunk.js.map",
+    "main.js": "/m3-clothes/static/js/main.25ffcae9.chunk.js",
+    "main.js.map": "/m3-clothes/static/js/main.25ffcae9.chunk.js.map",
+    "runtime-main.js": "/m3-clothes/static/js/runtime-main.3947e432.js",
+    "runtime-main.js.map": "/m3-clothes/static/js/runtime-main.3947e432.js.map",
+    "static/js/2.496bbb3e.chunk.js": "/m3-clothes/static/js/2.496bbb3e.chunk.js",
+    "static/js/2.496bbb3e.chunk.js.map": "/m3-clothes/static/js/2.496bbb3e.chunk.js.map",
+    "static/js/3.4eaeee03.chunk.js": "/m3-clothes/static/js/3.4eaeee03.chunk.js",
+    "static/js/3.4eaeee03.chunk.js.map": "/m3-clothes/static/js/3.4eaeee03.chunk.js.map",
     "index.html": "/m3-clothes/index.html",
     "static/css/main.4ba2e9bd.chunk.css.map": "/m3-clothes/static/css/main.4ba2e9bd.chunk.css.map",
-    "static/js/2.5fc408f7.chunk.js.LICENSE.txt": "/m3-clothes/static/js/2.5fc408f7.chunk.js.LICENSE.txt",
+    "static/js/2.496bbb3e.chunk.js.LICENSE.txt": "/m3-clothes/static/js/2.496bbb3e.chunk.js.LICENSE.txt",
     "static/media/img_10.f3e12486.png": "/m3-clothes/static/media/img_10.f3e12486.png",
     "static/media/img_2.92213bc2.png": "/m3-clothes/static/media/img_2.92213bc2.png",
     "static/media/img_3.424421dc.png": "/m3-clothes/static/media/img_3.424421dc.png",
@@ -23,9 +23,9 @@
     "static/media/img_9.b659aff7.png": "/m3-clothes/static/media/img_9.b659aff7.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.943430a5.js",
-    "static/js/2.5fc408f7.chunk.js",
+    "static/js/runtime-main.3947e432.js",
+    "static/js/2.496bbb3e.chunk.js",
     "static/css/main.4ba2e9bd.chunk.css",
-    "static/js/main.f9d23870.chunk.js"
+    "static/js/main.25ffcae9.chunk.js"
   ]
 }
