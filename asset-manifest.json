@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/m3-clothes/static/css/main.4ba2e9bd.chunk.css",
+    "main.js": "/m3-clothes/static/js/main.f9d23870.chunk.js",
+    "main.js.map": "/m3-clothes/static/js/main.f9d23870.chunk.js.map",
+    "runtime-main.js": "/m3-clothes/static/js/runtime-main.943430a5.js",
+    "runtime-main.js.map": "/m3-clothes/static/js/runtime-main.943430a5.js.map",
+    "static/js/2.5fc408f7.chunk.js": "/m3-clothes/static/js/2.5fc408f7.chunk.js",
+    "static/js/2.5fc408f7.chunk.js.map": "/m3-clothes/static/js/2.5fc408f7.chunk.js.map",
+    "static/js/3.e8610931.chunk.js": "/m3-clothes/static/js/3.e8610931.chunk.js",
+    "static/js/3.e8610931.chunk.js.map": "/m3-clothes/static/js/3.e8610931.chunk.js.map",
+    "index.html": "/m3-clothes/index.html",
+    "static/css/main.4ba2e9bd.chunk.css.map": "/m3-clothes/static/css/main.4ba2e9bd.chunk.css.map",
+    "static/js/2.5fc408f7.chunk.js.LICENSE.txt": "/m3-clothes/static/js/2.5fc408f7.chunk.js.LICENSE.txt",
+    "static/media/img_10.f3e12486.png": "/m3-clothes/static/media/img_10.f3e12486.png",
+    "static/media/img_2.92213bc2.png": "/m3-clothes/static/media/img_2.92213bc2.png",
+    "static/media/img_3.424421dc.png": "/m3-clothes/static/media/img_3.424421dc.png",
+    "static/media/img_4.5ca25b19.png": "/m3-clothes/static/media/img_4.5ca25b19.png",
+    "static/media/img_5.9864b0c0.png": "/m3-clothes/static/media/img_5.9864b0c0.png",
+    "static/media/img_6.854ad601.png": "/m3-clothes/static/media/img_6.854ad601.png",
+    "static/media/img_7.08e7d3d7.png": "/m3-clothes/static/media/img_7.08e7d3d7.png",
+    "static/media/img_8.8df1bf68.png": "/m3-clothes/static/media/img_8.8df1bf68.png",
+    "static/media/img_9.b659aff7.png": "/m3-clothes/static/media/img_9.b659aff7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.943430a5.js",
+    "static/js/2.5fc408f7.chunk.js",
+    "static/css/main.4ba2e9bd.chunk.css",
+    "static/js/main.f9d23870.chunk.js"
+  ]
+}
